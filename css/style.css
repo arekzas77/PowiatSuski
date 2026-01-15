@@ -36,13 +36,13 @@
 header{
 	position:fixed;
 	z-index:1000;
-	background-color:darkcyan;
+	background-color:#0a172b;
 	width:100%;
 	text-align:center;
 	color:white;
 	font-size: 30px;
 	padding: 12px 0px;
-	box-shadow: 4px 0px 12px darkcyan;
+	box-shadow: 4px 0px 12px #0a172b;
 }
 
 header img{
