@@ -5,7 +5,7 @@ const map = L.map('map',{
 	zoomSnap:1,
   zoomControl:false});
 
-map.setView([50, 20.65], 10);
+map.setView([49.75, 19.7], 10);
 
 //Extend ZoomBar - Adbutton "Start map"
 L.Control.MyZoomBar = L.Control.Zoom.extend({
@@ -31,6 +31,8 @@ map.addControl(new L.Control.MyZoomBar());
 L.control.scale({imperial:false}).addTo(map);
 
 
+const powiat=L.tileLayer('tiles/powiat/{z}/{x}/{y}.png',{maxNativeZoom:11,maxZoom:12,minZoom:10,transparent:true}).addTo(map);
+
 const openStreet=L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 	maxZoom: 18,
   attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -41,5 +43,9 @@ const baseMaps = {
 	'OpenStreet': openStreet,
  	'Brak': beztla};
 
-  const layerControl = L.control.layers(baseMaps).addTo(map);
+const overlayMap={
+				"<img src='css/images/pow_legend.png' align=top style='margin:4px 4px 2px 0px'>Powiaty":powiat
+	}
+
+  const layerControl = L.control.layers(baseMaps,overlayMap).addTo(map);
 
