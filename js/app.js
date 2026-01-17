@@ -23,15 +23,16 @@ L.Control.MyZoomBar = L.Control.Zoom.extend({
 	_zoomToStart: function(e) {
         L.DomEvent.stopPropagation(e);
         L.DomEvent.preventDefault(e);
-        map.setView([50, 20.65], 10);
+        map.setView([49.75, 19.7], 10);
     }
 });
 	
 map.addControl(new L.Control.MyZoomBar());
 L.control.scale({imperial:false}).addTo(map);
 
-
-const powiat=L.tileLayer('tiles/powiat/{z}/{x}/{y}.png',{maxNativeZoom:11,maxZoom:12,minZoom:10,transparent:true}).addTo(map);
+const obreby=L.tileLayer('tiles/obreby/{z}/{x}/{y}.png',{maxNativeZoom:14,maxZoom:16,minZoom:13,transparent:true}).addTo(map);
+const jednostkiEwidencyjne=L.tileLayer('tiles/JE/{z}/{x}/{y}.png',{maxNativeZoom:13,maxZoom:13,minZoom:11,transparent:true}).addTo(map);
+const powiat=L.tileLayer('tiles/powiat/{z}/{x}/{y}.png',{maxNativeZoom:11,maxZoom:11,minZoom:10,transparent:true}).addTo(map);
 
 const openStreet=L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 	maxZoom: 18,
@@ -44,7 +45,9 @@ const baseMaps = {
  	'Brak': beztla};
 
 const overlayMap={
-				"<img src='css/images/pow_legend.png' align=top style='margin:4px 4px 2px 0px'>Powiaty":powiat
+		"<img src='css/images/obreby_legend.png' align=top style='margin:4px 4px 2px 0px'>Obręby":obreby,
+		"<img src='css/images/je_legend.png' align=top style='margin:4px 4px 2px 0px'>Jednostki ewidencyjne":jednostkiEwidencyjne,
+		"<img src='css/images/pow_legend.png' align=top style='margin:4px 4px 2px 0px'>Powiaty":powiat
 	}
 
   const layerControl = L.control.layers(baseMaps,overlayMap).addTo(map);
